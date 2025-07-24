@@ -4,7 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons"
 import { colors } from "@/styles/colors";
 import { Categories } from "@/components/categories";
 import { Link } from "@/components/link";
-
+import { router } from "expo-router";
 
 export default function Index() {
 
@@ -19,7 +19,7 @@ export default function Index() {
 
                 {/*TouchableOpacity = Serve para dar um efeito ao tocar no icon 
                    MaterialIcons = O expo tem bibliotecas de icones*/}
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.navigate("/add")}>
                     <MaterialIcons name="add" size={32} color={colors.green[300]} />
                 </TouchableOpacity>
 
@@ -36,7 +36,7 @@ export default function Index() {
                 style={styles.links}
             />
 
-            <Modal transparent visible={true}>
+            <Modal transparent visible={false}>
                 <View style={styles.modal}>
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>

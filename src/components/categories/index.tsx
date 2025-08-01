@@ -3,8 +3,12 @@ import { FlatList } from "react-native";
 import { Category } from "@/components/category";
 import { styles } from "./styles";
 
+type Props = {
+    selected: string | undefined
+    onChang: (category: string) => void
 
-export function Categories() {
+}
+export function Categories({ selected, onChang }: Props) {
 
     return (
         // Tag usada para criar listas
@@ -19,7 +23,13 @@ export function Categories() {
             //renderItem =  o que vai ser renderizado
             renderItem={({ item }) => (
 
-                <Category id={item.id} name={item.name} icon={item.icons} isSelected={false} />
+                <Category
+                    id={item.id}
+                    name={item.name}
+                    icon={item.icons}
+                    isSelected={item.name === selected}
+                    onPress={() => onChang(item.name)}
+                />
             )}
 
             //horizontal = para a lista ficar na horizontal
